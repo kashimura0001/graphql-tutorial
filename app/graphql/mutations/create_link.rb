@@ -6,7 +6,7 @@ module Mutations
     field :link, Types::LinkType, null: false
 
     def resolve(description: nil, url: nil)
-      link = Link.create!(description: description, url: url)
+      link = Link.create!(description: description, url: url, user: context[:current_user])
       { link: link }
     end
   end
